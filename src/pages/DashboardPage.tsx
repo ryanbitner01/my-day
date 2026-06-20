@@ -9,10 +9,10 @@ export function DashboardPage() {
 		<div className="h-screen flex flex-col">
 			<section className="flex-1 flex items-center gap-16 flex-col pt-8">
 				<DashboardBasic
-					totalTasks={dashboard?.totalTasks ?? 0}
-					completedTasks={dashboard?.completedTasks ?? 0}
+					totalTasks={dashboard?.totalTasks}
+					completedTasks={dashboard?.completedTasks}
 					isLoading={isLoading}></DashboardBasic>
-				<RecentTasks recentTasks={dashboard?.recentTasks ?? []}></RecentTasks>
+				<RecentTasks recentTasks={dashboard?.recentTasks}></RecentTasks>
 			</section>
 		</div>
 	);

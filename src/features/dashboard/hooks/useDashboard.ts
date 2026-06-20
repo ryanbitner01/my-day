@@ -11,7 +11,7 @@ export function useDashboard() {
 			.getDashboard()
 			.then((dashboard) => setDashboard(dashboard))
 			.finally(() => setIsLoading(false));
-	});
+	}, []);
 
 	return {
 		dashboard: getDashboard,
