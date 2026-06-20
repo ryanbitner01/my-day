@@ -1,5 +1,5 @@
 interface RecentTasksProps {
-	recentTasks: string[];
+	recentTasks?: string[];
 }
 
 export function RecentTasks(props: RecentTasksProps) {
@@ -8,9 +8,14 @@ export function RecentTasks(props: RecentTasksProps) {
 			<div className="text-center font-bold text-4xl pb-4">
 				Recently Completed
 			</div>
-			{props.recentTasks.map((task) => {
-				return <div className="flex flex-col gap-2 text-2xl">{task}</div>;
-			})}
+			{props.recentTasks &&
+				props.recentTasks.map((task, idx) => {
+					return (
+						<div key={idx} className="flex flex-col gap-2 text-2xl">
+							{task}
+						</div>
+					);
+				})}
 		</section>
 	);
 }
