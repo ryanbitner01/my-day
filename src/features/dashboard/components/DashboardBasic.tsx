@@ -21,7 +21,9 @@ export function DashboardBasic({
 ">
 					Total Tasks
 				</h2>
-				<p className="text-gray-100">{isLoading ? "-" : totalTasks}</p>
+				<p data-testid="total-tasks-value" className="text-gray-100">
+					{isLoading ? "-" : totalTasks}
+				</p>
 			</div>
 
 			<div className="flex gap-2 justify-between text-2xl">
@@ -30,7 +32,9 @@ export function DashboardBasic({
 ">
 					Completed
 				</h2>
-				<p className="text-gray-100">{isLoading ? "-" : completedTasks}</p>
+				<p data-testid="completed-tasks-value" className="text-gray-100">
+					{isLoading ? "-" : completedTasks}
+				</p>
 			</div>
 		</div>
 	);
