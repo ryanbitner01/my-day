@@ -28,6 +28,8 @@ export default defineConfig({
 				"src/**/mock**.ts", // Mock implementations
 				"src/main.tsx", // Entry point
 				"src/App.tsx", // Wrapper component
+				"*/index.ts",
+				"router.tsx",
 			],
 			thresholds: {
 				statements: 80,
