@@ -6,23 +6,37 @@ interface TaskTableProps {
 
 export function TaskTable({ tasks }: TaskTableProps) {
 	return (
-		<table>
-			<thead>
+		<table className="min-w-full divide-y divide-slate-200 border border-slate-200 bg-white shadow-sm">
+			<thead className="bg-slate-50">
 				<tr>
-					<th>Task</th>
-					<th>Priority</th>
-					<th>Due Date</th>
-					<th>Status</th>
+					<th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
+						Task
+					</th>
+					<th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
+						Priority
+					</th>
+					<th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
+						Due Date
+					</th>
+					<th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">
+						Status
+					</th>
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody className="divide-y divide-slate-200">
 				{tasks.map((task) => (
-					<tr key={task.id}>
-						<td>{task.description}</td>
-						<td>{task.priority}</td>
-						<td>{task.dueDate.toString()}</td>
-						<td>{task.status}</td>
+					<tr key={task.id} className="hover:bg-slate-50">
+						<td className="px-4 py-3 text-sm text-slate-700">
+							{task.description}
+						</td>
+						<td className="px-4 py-3 text-sm text-slate-700">
+							{task.priority}
+						</td>
+						<td className="px-4 py-3 text-sm text-slate-700">
+							{task.dueDate.toString()}
+						</td>
+						<td className="px-4 py-3 text-sm text-slate-700">{task.status}</td>
 					</tr>
 				))}
 			</tbody>
