@@ -1,10 +1,17 @@
 import type { Task } from "@app-types/task.types";
+import { useNavigate } from "react-router";
 
 interface TaskTableProps {
 	tasks: Task[];
 }
 
 export function TaskTable({ tasks }: TaskTableProps) {
+	const navigate = useNavigate();
+
+	const handleRowClick = (id: string) => {
+		navigate(`/tasks/${id}`);
+	};
+
 	return (
 		<table className="min-w-full divide-y divide-slate-200 border border-slate-200 bg-white shadow-sm">
 			<thead className="bg-slate-50">
@@ -26,7 +33,10 @@ export function TaskTable({ tasks }: TaskTableProps) {
 
 			<tbody className="divide-y divide-slate-200">
 				{tasks.map((task) => (
-					<tr key={task.id} className="hover:bg-slate-50">
+					<tr
+						onClick={() => handleRowClick(task.id)}
+						key={task.id}
+						className="hover:bg-slate-50">
 						<td className="px-4 py-3 text-sm text-slate-700">
 							{task.description}
 						</td>
@@ -34,7 +44,11 @@ export function TaskTable({ tasks }: TaskTableProps) {
 							{task.priority}
 						</td>
 						<td className="px-4 py-3 text-sm text-slate-700">
-							{task.dueDate.toString()}
+							{new Date(task.dueDate).toLocaleDateString("en-US", {
+								month: "numeric",
+								day: "numeric",
+								year: "numeric",
+							})}{" "}
 						</td>
 						<td className="px-4 py-3 text-sm text-slate-700">{task.status}</td>
 					</tr>

@@ -5,7 +5,6 @@ export function useSearchTasks(tasks: Task[]) {
 	const [getSearchTerm, setSearchTerm] = useState("");
 
 	const filteredTasks = useMemo(() => {
-		console.log(getSearchTerm);
 		if (!getSearchTerm.trim()) return tasks;
 
 		return tasks.filter((task) =>

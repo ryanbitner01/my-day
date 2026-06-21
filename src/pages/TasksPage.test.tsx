@@ -31,6 +31,17 @@ vi.mock("../features/tasks/hooks/useSearchTask", () => ({
 	useSearchTasks: vi.fn(),
 }));
 
+const navigateMock = vi.fn();
+
+vi.mock("react-router", async () => {
+	const actual =
+		await vi.importActual<typeof import("react-router")>("react-router");
+	return {
+		...actual,
+		useNavigate: () => navigateMock,
+	};
+});
+
 describe("TasksPage", () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
@@ -68,5 +79,13 @@ describe("TasksPage", () => {
 		fireEvent.change(input, { target: { value: "Create" } });
 
 		expect(setSearchTermMock).toHaveBeenCalledWith("Create");
+	});
+
+	it("should call navigate when create new clicked", () => {
+		render(<TasksPage />);
+
+		const button = screen.getByRole("button") as HTMLButtonElement;
+		button.click();
+		expect(navigateMock).toHaveBeenCalledWith("/tasks/new");
 	});
 });
